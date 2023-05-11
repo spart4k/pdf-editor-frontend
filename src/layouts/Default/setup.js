@@ -18,4 +18,7 @@ export default {
 
   methods: {
   },
+  mounted() {
+    this.$vuetify.theme.themes.light.primary = '#000'
+  }
 }
