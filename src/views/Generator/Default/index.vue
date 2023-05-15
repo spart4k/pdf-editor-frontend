@@ -1,29 +1,60 @@
 <template>
   <LayoutDefault>
+    <v-col class="pl-0" cols="2" md="2">
+      <v-text-field
+        v-model="docData.time"
+        class=""
+        variant="underlined"
+        label="Кол-во рабочих недель"
+        required
+        clearable
+        type="number"
+        hint="Введите кол-во недель"
+        @click:append-outer="removeStep(stepIndex, stageIndex)"
+      ></v-text-field>
+      <v-text-field
+        v-model="docData.time"
+        class=""
+        variant="underlined"
+        label="Контактное лицо"
+        required
+        clearable
+        hint="Введите кол-во недель"
+        @click:append-outer="removeStep(stepIndex, stageIndex)"
+      ></v-text-field>
+      <v-text-field
+        v-model="docData.time"
+        class=""
+        variant="underlined"
+        label="Email контактного лица"
+        required
+        clearable
+        type="number"
+        hint="Введите кол-во недель"
+        @click:append-outer="removeStep(stepIndex, stageIndex)"
+      ></v-text-field>
+      <v-text-field
+        v-model="docData.time"
+        class=""
+        variant="underlined"
+        label="Телефон контактного лица"
+        required
+        clearable
+        type="number"
+        hint="Введите кол-во недель"
+        @click:append-outer="removeStep(stepIndex, stageIndex)"
+      ></v-text-field>
+    </v-col>
     <v-text-field
       variant="underlined"
-      label="Заголовок"
+      label="Заголовок документа"
       v-model="docData.docTitle"
       required
-    ></v-text-field>
-    <v-text-field
-      cols="2"
-      md="2"
-      v-model="docData.time"
-      class=""
-      variant="underlined"
-      label="Заголовок"
-      required
-      clearable
-      type="number"
-      hint="Введите кол-во недель"
-      @click:append-outer="removeStep(stepIndex, stageIndex)"
     ></v-text-field>
     <v-row class="mb-10">
       <v-col
       cols="6"
       md="6"
-      class="pl-5"
       >
         <v-expansion-panels>
           <v-expansion-panel
@@ -31,7 +62,7 @@
             <v-expansion-panel-header>
               <div class="d-flex align-center">
                 <p class="mb-0">Этапы</p>
-                <v-icon @click="addStage" class="ml-2">mdi-plus</v-icon>
+                <v-icon @click.stop="addStage" class="ml-2">mdi-plus</v-icon>
               </div>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
@@ -55,7 +86,7 @@
                     <div class="mb-2 pl-3">
                       <div class="mb-2 d-flex align-center">
                         <p class="mb-0">Срок разработки ( Недели )</p>
-                        <v-icon @click="addStep(stageIndex)" class="ml-2">mdi-plus</v-icon>
+                        <v-icon @click.stop="addStep(stageIndex)" class="ml-2">mdi-plus</v-icon>
                       </div>
                       <v-row class="pl-3">
                         <v-text-field
@@ -140,7 +171,7 @@
               <v-expansion-panel-header>
                 <div class="d-flex align-center">
                   <p class="mb-0">Специалисты</p>
-                  <v-icon @click="addStep(stageIndex)" class="ml-2">mdi-plus</v-icon>
+                  <v-icon @click.stop="addSpecialist()" class="ml-2">mdi-plus</v-icon>
                 </div>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -224,11 +255,11 @@
             <div :class="$style.result">
               <div :class="$style.price">
                 <p>Итого</p>
-                <p>0,00 RUB</p>
+                <p>{{ docData.allCost }} RUB</p>
               </div>
               <div :class="$style.shedule">
                 <p>Срок реализации проекта</p>
-                <p>26 рабочих недель</p>
+                <p>{{ docData.time }} рабочих недель</p>
               </div>
             </div>
           </div>
@@ -247,7 +278,7 @@
                   <tr :class="$style.lighting">
                     <td :class="$style.rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
                     <td :width="tableOptions.smeta.cols.second"></td>
-                    <td :width="tableOptions.smeta.cols.third" colspan="26" >{{ stage.cost }}</td>
+                    <td :width="tableOptions.smeta.cols.third" align="right" colspan="26" >{{ stage.cost }} RUB</td>
                   </tr>
                   <tr v-for="(item,index) in stage.steps">
                     <td :width="tableOptions.smeta.cols.first"><p v-html="item"></p></td>
@@ -381,7 +412,9 @@
           </section>
         </section>
     </vue-html2pdf>
-    <button @click="exportToPDF">Export to PDF</button>
+    <v-btn class="mt-5" @click="exportToPDF">
+      Export to PDF
+    </v-btn>
   </LayoutDefault>
 </template>
 

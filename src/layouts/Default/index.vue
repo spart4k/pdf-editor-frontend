@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.layout" >
     <!--<Nav/>-->
-    <Logo class="pt-5 pl-5" />
+    <Logo class="mb-10" />
     <v-main>
       <slot></slot>
       <!--<Alert/>-->

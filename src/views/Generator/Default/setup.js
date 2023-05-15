@@ -48,6 +48,12 @@ export default {
       docData: {
         docTitle: 'Коммерческое предложение на разработку сайта для группы компании «Центр Речевых Технологий»',
         time: null,
+        contactPerson: {
+          name: 'Евгений Смирнов',
+          email: 'jenya@roky.rocks',
+          phone: '+7 917 036 12 10'
+        },
+        allCost: null,
         stages: [
           {
             title: 'Проектирование',
@@ -382,18 +388,28 @@ export default {
   watch: {
     'docData.stages': {
       handler(newValue, oldValue) {
-        console.log(newValue)
         this.docData.stages.forEach((stage) => {
           const delta = stage.end - stage.start
-          var costTeam = null
-          stage.team.forEach((item) => {
-            if (item.cost) {
-              costTeam =+ item.cost
-              console.log(costTeam)
-            }
-          })
+          //var costTeam = null
+          //stage.team.forEach((item) => {
+          //  if (item.cost) {
+          //    costTeam =+ item.cost
+          //    console.log(costTeam)
+          //  }
+          //})
+          const initialValue = 0;
+          const costTeam = stage.team.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.cost,
+            initialValue
+          );
           stage.cost = delta * costTeam
         })
+        const initialValue = 0;
+        const allCost = this.docData.stages.reduce(
+          (accumulator, currentValue) => accumulator + currentValue.cost,
+          initialValue
+        );
+        this.docData.allCost = allCost
       },
       deep: true
     }
