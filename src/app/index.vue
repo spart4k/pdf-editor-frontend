@@ -3,5 +3,7 @@
     <router-view></router-view>
   </v-app>
 </template>
-<style lang="scss" module scoped src="./style.scss"></style>
+<style lang="scss">
+@import '../styles/main.scss';
+</style>
 <script src="./setup.js"></script>

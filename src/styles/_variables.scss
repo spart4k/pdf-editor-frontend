@@ -1,0 +1,54 @@
+@use 'sass:math';
+
+@function rem($value, $delimeter: 16) {
+  @return math.div($value, $delimeter) * 1rem
+};
+
+@mixin defaultFontSize {
+  font-size: rem(18);
+  line-height: 1.1666666667;
+}
+
+@mixin container {
+  width: 100%;
+  padding: 0 rem(30);
+}
+
+@mixin containerMobile {
+  width: 100%;
+  padding: 0 rem(15);
+}
+
+$fontSize: 10pt;
+//$titleSize: 26pt;
+$titleSize: 14pt;
+$subTitleSize: 12pt;
+$tableTitleSize: 12pt;
+$lightingRow: #F4F2EF;
+$tableRowTitle: 10pt;
+
+@mixin title {
+  font-weight: 700;
+  font-size: $titleSize;
+  line-height: 1.1;
+  //letter-spacing: -1.1pt;
+}
+
+@mixin subTitle {
+  font-size: $subTitleSize;
+  //letter-spacing: -1pt;
+  font-weight: 500;
+}
+
+@mixin defaultText {
+  font-weight: 500;
+  //letter-spacing: -.5px;
+  line-height: 1.2;
+  font-size: 8pt;
+}
+
+@mixin tableTitle {
+  font-size: $tableTitleSize;
+  //letter-spacing: -1pt;
+  font-weight: 500;
+}

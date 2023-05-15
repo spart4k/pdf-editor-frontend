@@ -1,0 +1,112 @@
+.preview {
+  width: 1100px;
+  page-break-inside: avoid;
+}
+* {
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+.pdfpreview {
+  background-color: #fff;
+  padding: 50pt 30pt;
+  //font-family: "Times New Roman", sans-serif;
+  width: 100%;
+  page-break-inside: avoid;
+  p {
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .template {
+    //width: rem(1308);
+    page-break-inside: avoid;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10pt;
+      .title {
+        @include title;
+        width: 50%;
+      }
+      .row {
+        width: 45%;
+        display: flex;
+        @include defaultText;
+        color: rgba(0,0,0,.5);
+        .col {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          &:first-child {
+            > div {
+              &:first-child {
+                margin-bottom: 12pt;
+              }
+            }
+          }
+          &:last-child {
+            img {
+              max-width: 100%;
+              width: 65%;
+              margin-bottom: 12pt;
+            }
+          }
+
+        }
+      }
+    }
+    .table {
+      width: 100%;
+      h2 {
+        @include tableTitle;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        @include defaultText;
+        border: .5px solid rgba(0,0,0,.1);
+      }
+      tr {
+        &.lighting {
+          background-color: #F4F2EF;
+          .rowTitle {
+            font-size: $tableRowTitle;
+            font-weight: 700;
+          }
+        }
+        td {
+          &.filled {
+            background-color: #ece7de;
+          }
+        }
+      }
+    }
+    .result {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15pt;
+      .price, .shedule {
+        width: 35%;
+        text-align: center;
+        p {
+          &:first-child {
+            @include subTitle;
+            color: rgba(0,0,0,.5);
+            margin-bottom: 3pt;
+          }
+          &:last-child {
+            @include title;
+          }
+        }
+      }
+    }
+    .taxi {
+      margin-top: 10pt;
+      span {
+        font-size: $tableRowTitle;
+        font-weight: 700;
+      }
+    }
+  }
+}
