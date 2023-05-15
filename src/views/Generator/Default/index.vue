@@ -1,9 +1,80 @@
 <template>
   <LayoutDefault>
-    <v-col class="pl-0" cols="2" md="2">
+    <div class="">
+      <div class="d-flex align-center">
+        <p class="mb-0">Шапка</p>
+      </div>
+      <v-row class="pl-2" cols="6" md="8">
+        <v-col cols="6" md="2">
+          <v-text-field
+            v-model="docData.contactPerson.name"
+            class=""
+            variant="underlined"
+            label="Контактное лицо"
+            required
+            clearable
+            hint="Введите кол-во недель"
+            @click:append-outer="removeStep(stepIndex, stageIndex)"
+          ></v-text-field>
+          <v-text-field
+            v-model="docData.contactPerson.email"
+            class=""
+            variant="underlined"
+            label="Email контактного лица"
+            required
+            clearable
+            hint="Введите email контактного лица"
+            @click:append-outer="removeStep(stepIndex, stageIndex)"
+          ></v-text-field>
+          <v-text-field
+            v-model="docData.contactPerson.phone"
+            class=""
+            variant="underlined"
+            label="Телефон контактного лица"
+            required
+            hint="Введите телефон контактного лица"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="6" md="2">
+          <v-text-field
+            v-model="docData.contactPerson.phone"
+            class=""
+            variant="underlined"
+            label="Телефон контактного лица"
+            required
+            hint="Введите телефон контактного лица"
+          ></v-text-field>
+          <v-text-field
+            v-model="docData.metaInfo.phone"
+            class=""
+            variant="underlined"
+            label="Телефон юр.лица"
+            required
+            clearable
+            hint="Введите телефон юр.лица"
+            @click:append-outer="removeStep(stepIndex, stageIndex)"
+          ></v-text-field>
+          <v-text-field
+            v-model="docData.metaInfo.email"
+            class=""
+            variant="underlined"
+            label="Email юр.лица"
+            required
+            hint="Введите email юр.лица"
+          ></v-text-field>
+          <v-text-field
+            v-model="docData.metaInfo.taxi"
+            class=""
+            variant="underlined"
+            label="Email юр.лица"
+            required
+            hint="Введите email юр.лица"
+          ></v-text-field>
+        </v-col>
+      </v-row>
       <v-text-field
         v-model="docData.time"
-        class=""
+        class="mt-0 pt-0"
         variant="underlined"
         label="Кол-во рабочих недель"
         required
@@ -12,39 +83,7 @@
         hint="Введите кол-во недель"
         @click:append-outer="removeStep(stepIndex, stageIndex)"
       ></v-text-field>
-      <v-text-field
-        v-model="docData.time"
-        class=""
-        variant="underlined"
-        label="Контактное лицо"
-        required
-        clearable
-        hint="Введите кол-во недель"
-        @click:append-outer="removeStep(stepIndex, stageIndex)"
-      ></v-text-field>
-      <v-text-field
-        v-model="docData.time"
-        class=""
-        variant="underlined"
-        label="Email контактного лица"
-        required
-        clearable
-        type="number"
-        hint="Введите кол-во недель"
-        @click:append-outer="removeStep(stepIndex, stageIndex)"
-      ></v-text-field>
-      <v-text-field
-        v-model="docData.time"
-        class=""
-        variant="underlined"
-        label="Телефон контактного лица"
-        required
-        clearable
-        type="number"
-        hint="Введите кол-во недель"
-        @click:append-outer="removeStep(stepIndex, stageIndex)"
-      ></v-text-field>
-    </v-col>
+    </div>
     <v-text-field
       variant="underlined"
       label="Заголовок документа"
@@ -214,9 +253,9 @@
                   <p>Контактное лицо <br> со стороны Исполнителя</p>
                 </div>
                 <div class="">
-                  <p>Евгений Смирнов</p>
-                  <p>jenya@roky.rocks</p>
-                  <p>+7 917 036 12 10</p>
+                  <p>{{ docData.contactPerson.name }}</p>
+                  <p>{{ docData.contactPerson.email }}</p>
+                  <p>{{ docData.contactPerson.phone }}</p>
                 </div>
               </div>
               <div :class="$style.col">
@@ -293,7 +332,7 @@
               </tbody>
             </table>
           </div>
-          <p :class="$style.taxi">* <span>НДС не облагается на основании гл. 26.2 НК РФ</span></p>
+          <p :class="$style.taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
         </div>
       </div>
     </div>
@@ -327,9 +366,9 @@
                         <p>Контактное лицо <br> со стороны Исполнителя</p>
                       </div>
                       <div class="">
-                        <p>Евгений Смирнов</p>
-                        <p>jenya@roky.rocks</p>
-                        <p>+7 917 036 12 10</p>
+                        <p>{{ docData.contactPerson.name }}</p>
+                        <p>{{ docData.contactPerson.email }}</p>
+                        <p>{{ docData.contactPerson.phone }}</p>
                       </div>
                     </div>
                     <div :class="$style.col">
@@ -368,11 +407,11 @@
                   <div :class="$style.result">
                     <div :class="$style.price">
                       <p>Итого</p>
-                      <p>0,00 RUB</p>
+                      <p>{{ docData.allCost }} RUB</p>
                     </div>
                     <div :class="$style.shedule">
                       <p>Срок реализации проекта</p>
-                      <p>26 рабочих недель</p>
+                      <p>{{ docData.time }} рабочих недель</p>
                     </div>
                   </div>
                 </div>
@@ -391,7 +430,7 @@
                         <tr :class="$style.lighting">
                           <td :class="$style.rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
                           <td :width="tableOptions.smeta.cols.second"></td>
-                          <td :width="tableOptions.smeta.cols.third" colspan="26" >{{ stage.cost }}</td>
+                          <td :width="tableOptions.smeta.cols.third" align="right" colspan="26" >{{ stage.cost }} RUB</td>
                         </tr>
                         <tr v-for="(item,index) in stage.steps">
                           <td :width="tableOptions.smeta.cols.first"><p v-html="item"></p></td>
@@ -406,7 +445,7 @@
                     </tbody>
                   </table>
                 </div>
-                <p :class="$style.taxi">* <span>НДС не облагается на основании гл. 26.2 НК РФ</span></p>
+                <p :class="$style.taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
               </div>
             </div>
           </section>

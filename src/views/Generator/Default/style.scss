@@ -65,7 +65,7 @@
         border-collapse: collapse;
         width: 100%;
         @include defaultText;
-        border: .5px solid rgba(0,0,0,.1);
+        border: .5pt solid rgba(0,0,0,.1);
       }
       tr {
         &.lighting {
@@ -76,6 +76,7 @@
           }
         }
         td {
+          padding: 3pt;
           &.filled {
             background-color: #ece7de;
           }

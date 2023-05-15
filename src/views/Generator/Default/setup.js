@@ -53,6 +53,12 @@ export default {
           email: 'jenya@roky.rocks',
           phone: '+7 917 036 12 10'
         },
+        metaInfo: {
+          name: 'ROKY',
+          email: '8 800 201 1486',
+          phone: 'www.roky.rocks; hello@roky.rocks',
+          taxi: 'НДС не облагается на основании гл. 26.2 НК РФ'
+        },
         allCost: null,
         stages: [
           {
@@ -386,7 +392,7 @@ export default {
     }
   },
   watch: {
-    'docData.stages': {
+    'docData': {
       handler(newValue, oldValue) {
         this.docData.stages.forEach((stage) => {
           const delta = stage.end - stage.start
@@ -410,6 +416,9 @@ export default {
           initialValue
         );
         this.docData.allCost = allCost
+        console.log(newValue)
+        localStorage.setItem('docData', JSON.stringify(newValue))
+
       },
       deep: true
     }
@@ -417,5 +426,8 @@ export default {
   mounted() {
     console.log('test')
     console.log(this.$refs.testRef)
+    const savedData = localStorage.getItem('docData')
+    console.log(savedData)
+    this.docData = JSON.parse(savedData)
   },
 }

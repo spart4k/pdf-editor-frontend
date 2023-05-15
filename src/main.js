@@ -4,9 +4,11 @@ import App from './app/index.vue'
 import router from "./router";
 import store from './store'
 import vuetify from './plugins/vuetify'
+import { VueMaskDirective } from 'v-mask'
 import '@babel/polyfill'
 
 Vue.use(VueRouter);
+Vue.directive('mask', VueMaskDirective);
 
 Vue.config.productionTip = false
 
