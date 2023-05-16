@@ -428,6 +428,9 @@ export default {
     console.log(this.$refs.testRef)
     const savedData = localStorage.getItem('docData')
     console.log(savedData)
-    this.docData = JSON.parse(savedData)
+    if (savedData) {
+      this.docData = JSON.parse(savedData)
+    }
+
   },
 }

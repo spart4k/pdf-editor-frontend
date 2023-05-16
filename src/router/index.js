@@ -10,8 +10,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: '/doc-editor',
+  mode: 'history',
+  base: '/mp-app/',
   routes,
 });
 

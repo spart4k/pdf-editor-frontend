@@ -7,10 +7,11 @@ module.exports = defineConfig({
         additionalData: '@import "@/styles/global.scss";',
       },
     },
-    sourceMap: process.env.NODE_ENV === 'development',
+    sourceMap: process.env.NODE_ENV === 'production',
   },
   configureWebpack: {
     devtool: process.env.NODE_ENV === 'development' ? 'inline-source-map' : false,
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 
 })
