@@ -6,6 +6,7 @@
   page-break-inside: avoid;
   page-break-after: avoid;
 }
+
 .pdfpreview {
   background-color: #fff;
   padding: 50pt 30pt;
@@ -15,6 +16,7 @@
   p {
     padding: 0;
     margin-bottom: 0;
+    margin-top: 0;
   }
   .template {
     //width: rem(1308);
@@ -27,6 +29,9 @@
       .title {
         @include title;
         width: 50%;
+      }
+      p {
+        margin-bottom: 0;
       }
       .row {
         width: 45%;
@@ -77,6 +82,9 @@
         }
         td {
           padding: 3pt;
+          p {
+            margin-bottom: 0;
+          }
           &.filled {
             background-color: #ece7de;
           }

@@ -1,6 +1,6 @@
 import LayoutDefault from '@/layouts/Default'
-import VueHtml2pdf from 'vue-html2pdf'
-//import Vue from 'vue'
+import axios from 'axios'
+import Vue from 'vue'
 
 export default {
   name: "Generator-Default",
@@ -8,7 +8,6 @@ export default {
     //Alert,
     LayoutDefault,
     //html2pdf,
-    VueHtml2pdf
   },
   data() {
     return {
@@ -36,6 +35,7 @@ export default {
             orientation: 'portrait'
         }
       },
+      loading: false,
       tableOptions: {
         smeta: {
           cols: {
@@ -48,6 +48,9 @@ export default {
       docData: {
         docTitle: 'Коммерческое предложение на разработку сайта для группы компании «Центр Речевых Технологий»',
         time: null,
+        currency: '',
+        path: '',
+        filename: '',
         contactPerson: {
           name: 'Евгений Смирнов',
           email: 'jenya@roky.rocks',
@@ -329,20 +332,29 @@ export default {
 
   methods: {
     exportToPDF() {
-      console.log(this.$axios)
-      //this.$refs.html2Pdf.generatePdf()
-      //function downloadInnerHtml(filename, elId, mimeType) {
-      //    var elHtml = document.getElementById(elId).innerHTML;
-      //    var link = document.createElement('a');
-      //    mimeType = mimeType || 'text/plain';
+      this.sendDocument()
 
-      //    link.setAttribute('download', filename);
-      //    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
-      //    link.click();
-      //}
+    },
+    async sendDocument() {
+      this.loading = true
+      var elHtml = document.getElementById('element-to-convert').innerHTML;
+      // const response = await axios.post('http://localhost:3000/postDocument', elHtml)
+      console.log(elHtml)
+      try {
+        const { data } = await axios.post('http://localhost:3000/postDocument', { document: elHtml, filename: this.docData.filename }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        //this.docData.path = data.path
+        Vue.set(this.docData, 'path', data.path);
+        this.loading = false
+      } catch {
 
-      //var fileName =  'tags.html'; // You can use the .txt extension if you want
-      //downloadInnerHtml(fileName, 'element-to-convert','text/html');
+      }
+
+      // const response = await axios.get('http://localhost:3000/getDocument')
+
 
     },
     async beforeDownload ({ html2pdf, options, pdfContent }) {
@@ -419,7 +431,7 @@ export default {
             (accumulator, currentValue) => accumulator + currentValue.cost,
             initialValue
           );
-          stage.cost = delta * costTeam
+          stage.cost = (delta + 1 ) * costTeam
         })
         const initialValue = 0;
         const allCost = this.docData.stages.reduce(
