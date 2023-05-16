@@ -341,7 +341,7 @@ export default {
       // const response = await axios.post('http://localhost:3000/postDocument', elHtml)
       console.log(elHtml)
       try {
-        const { data } = await axios.post('http://localhost:5501/postDocument', { document: elHtml, filename: this.docData.filename }, {
+        const { data } = await axios.post('https://roky.rocks/doc-editor/api/postDocument', { document: elHtml, filename: this.docData.filename }, {
           headers: {
             'Content-Type': 'application/json'
           }
