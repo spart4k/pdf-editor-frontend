@@ -6,6 +6,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import { VueMaskDirective } from 'v-mask'
 import '@babel/polyfill'
+Vue.config.devtools = true
 
 Vue.use(VueRouter);
 Vue.directive('mask', VueMaskDirective);
