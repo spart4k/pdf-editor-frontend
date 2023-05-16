@@ -329,10 +329,21 @@ export default {
 
   methods: {
     exportToPDF() {
-      this.$refs.html2Pdf.generatePdf()
-		},
-    generateReport () {
-      this.$refs.html2Pdf.generatePdf()
+      console.log(this.$axios)
+      //this.$refs.html2Pdf.generatePdf()
+      //function downloadInnerHtml(filename, elId, mimeType) {
+      //    var elHtml = document.getElementById(elId).innerHTML;
+      //    var link = document.createElement('a');
+      //    mimeType = mimeType || 'text/plain';
+
+      //    link.setAttribute('download', filename);
+      //    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+      //    link.click();
+      //}
+
+      //var fileName =  'tags.html'; // You can use the .txt extension if you want
+      //downloadInnerHtml(fileName, 'element-to-convert','text/html');
+
     },
     async beforeDownload ({ html2pdf, options, pdfContent }) {
       await html2pdf().set(options).from(pdfContent).toPdf().get('pdf').then((pdf) => {

@@ -242,13 +242,13 @@
         </div>
       </v-col>
     </v-row>
-    <div :class="$style.preview">
-      <div id="element-to-convert" :class="$style.pdfpreview">
-        <div :class="$style.template">
-          <div :class="$style.header">
-            <h1 :class="$style.title">{{ docData.docTitle }}</h1>
-            <div :class="$style.row">
-              <div :class="$style.col">
+    <div id="element-to-convert" class="preview">
+      <div class="pdfpreview">
+        <div  class="template">
+          <div  class="header">
+            <h1  class="title">{{ docData.docTitle }}</h1>
+            <div  class="row">
+              <div  class="col">
                 <div class="">
                   <p>Контактное лицо <br> со стороны Исполнителя</p>
                 </div>
@@ -258,7 +258,7 @@
                   <p>{{ docData.contactPerson.phone }}</p>
                 </div>
               </div>
-              <div :class="$style.col">
+              <div  class="col">
                 <img src="@/assets/images/ROKY.png" alt="">
                 <div class="">
                   <p>ROKY</p>
@@ -268,7 +268,7 @@
               </div>
             </div>
           </div>
-          <div :class="[$style.table, $style.price]">
+          <div :class="['table', 'price']">
             <h2>Стоимость работ по проекту</h2>
             <table border="1">
               <thead>
@@ -287,22 +287,22 @@
                 <tr v-for="stage in docData.stages">
                   <td width="20%">{{ stage.title }}</td>
                   <td width="10%">{{ stage.cost }}</td>
-                  <td :class='[indexCol+1 > +stage.start && indexCol+1 < +stage.end && $style.filled ]' :width="70/+docData.time + '%'" v-for="item,indexCol in +docData.time" :key="indexCol"></td>
+                  <td :class='[indexCol+1 > +stage.start && indexCol+1 < +stage.end && "filled"]' :width="70/+docData.time + '%'" v-for="item,indexCol in +docData.time" :key="indexCol"></td>
                 </tr>
               </tbody>
             </table>
-            <div :class="$style.result">
-              <div :class="$style.price">
+            <div  class="result">
+              <div  class="price">
                 <p>Итого</p>
                 <p>{{ docData.allCost }} RUB</p>
               </div>
-              <div :class="$style.shedule">
+              <div  class="shedule">
                 <p>Срок реализации проекта</p>
                 <p>{{ docData.time }} рабочих недель</p>
               </div>
             </div>
           </div>
-          <div :class="[$style.table, $style.price]">
+          <div :class="['table', 'price']">
             <h2>Смета проекта</h2>
             <table border="1">
               <thead>
@@ -314,8 +314,8 @@
               </thead>
               <tbody>
                 <template v-for="(stage) in docData.stages">
-                  <tr :class="$style.lighting">
-                    <td :class="$style.rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
+                  <tr  class="lighting">
+                    <td  class="rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
                     <td :width="tableOptions.smeta.cols.second"></td>
                     <td :width="tableOptions.smeta.cols.third" align="right" colspan="26" >{{ stage.cost }} RUB</td>
                   </tr>
@@ -332,7 +332,7 @@
               </tbody>
             </table>
           </div>
-          <p :class="$style.taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
+          <p  class="taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
         </div>
       </div>
     </div>
@@ -356,12 +356,12 @@
     >
         <section slot="pdf-content">
           <section class="pdf-content">
-            <div id="element-to-convert" :class="$style.pdfpreview">
-              <div :class="$style.template">
-                <div :class="$style.header">
-                  <h1 :class="$style.title">{{ docData.docTitle }}</h1>
-                  <div :class="$style.row">
-                    <div :class="$style.col">
+            <div  class="pdfpreview">
+              <div  class="template">
+                <div  class="header">
+                  <h1  class="title">{{ docData.docTitle }}</h1>
+                  <div  class="row">
+                    <div  class="col">
                       <div class="">
                         <p>Контактное лицо <br> со стороны Исполнителя</p>
                       </div>
@@ -371,7 +371,7 @@
                         <p>{{ docData.contactPerson.phone }}</p>
                       </div>
                     </div>
-                    <div :class="$style.col">
+                    <div  class="col">
                       <img src="@/assets/images/ROKY.png" alt="">
                       <div class="">
                         <p>ROKY</p>
@@ -381,7 +381,7 @@
                     </div>
                   </div>
                 </div>
-                <div :class="[$style.table, $style.price]">
+                <div :class="['table', 'price']">
                   <h2>Стоимость работ по проекту</h2>
                   <table border="1">
                     <thead>
@@ -400,22 +400,22 @@
                       <tr v-for="stage in docData.stages">
                         <td width="20%">{{ stage.title }}</td>
                         <td width="10%">{{ stage.cost }}</td>
-                        <td :class='[indexCol+1 > +stage.start && indexCol+1 < +stage.end && $style.filled ]' :width="70/+docData.time + '%'" v-for="item,indexCol in +docData.time" :key="indexCol"></td>
+                        <td :class='[indexCol+1 > +stage.start && indexCol+1 < +stage.end && "filled" ]' :width="70/+docData.time + '%'" v-for="item,indexCol in +docData.time" :key="indexCol"></td>
                       </tr>
                     </tbody>
                   </table>
-                  <div :class="$style.result">
-                    <div :class="$style.price">
+                  <div  class="result">
+                    <div  class="price">
                       <p>Итого</p>
                       <p>{{ docData.allCost }} RUB</p>
                     </div>
-                    <div :class="$style.shedule">
+                    <div  class="shedule">
                       <p>Срок реализации проекта</p>
                       <p>{{ docData.time }} рабочих недель</p>
                     </div>
                   </div>
                 </div>
-                <div :class="[$style.table, $style.price]">
+                <div :class="['table', 'price']">
                   <h2>Смета проекта</h2>
                   <table border="1">
                     <thead>
@@ -427,8 +427,8 @@
                     </thead>
                     <tbody>
                       <template v-for="(stage) in docData.stages">
-                        <tr :class="$style.lighting">
-                          <td :class="$style.rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
+                        <tr  class="lighting">
+                          <td  class="rowTitle" :width="tableOptions.smeta.cols.first">{{ stage.title }}</td>
                           <td :width="tableOptions.smeta.cols.second"></td>
                           <td :width="tableOptions.smeta.cols.third" align="right" colspan="26" >{{ stage.cost }} RUB</td>
                         </tr>
@@ -445,7 +445,7 @@
                     </tbody>
                   </table>
                 </div>
-                <p :class="$style.taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
+                <p  class="taxi">* <span>{{ docData.metaInfo.taxi }}</span></p>
               </div>
             </div>
           </section>
@@ -454,9 +454,15 @@
     <v-btn class="mt-5" @click="exportToPDF">
       Export to PDF
     </v-btn>
+    <a href="#" id="downloadLink">Download the inner html</a>
   </LayoutDefault>
 </template>
 
-<style lang="scss" scoped module src="./style.scss">
+<style lang="scss" src="./style.scss">
+</style>
+<style>
+  td {
+    padding: 1000rem;
+  }
 </style>
 <script src='./setup.js'></script>
