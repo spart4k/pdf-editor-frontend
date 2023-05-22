@@ -14,7 +14,7 @@
               label="Контактное лицо"
               required
               clearable
-              hint="Введите кол-во недель"
+              hint="Введите данные конт-ого лица"
               @click:append-outer="removeStep(stepIndex, stageIndex)"
             ></v-text-field>
             <v-text-field
@@ -58,18 +58,10 @@
           </v-col>
           <v-col cols="6" md="2">
             <v-text-field
-              v-model="docData.contactPerson.phone"
-              class=""
-              variant="underlined"
-              label="Телефон контактного лица"
-              required
-              hint="Введите телефон контактного лица"
-            ></v-text-field>
-            <v-text-field
               v-model="docData.metaInfo.phone"
               class=""
               variant="underlined"
-              label="Телефон юр.лица"
+              label="Сайт / почта"
               required
               clearable
               hint="Введите телефон юр.лица"
@@ -79,18 +71,18 @@
               v-model="docData.metaInfo.email"
               class=""
               variant="underlined"
-              label="Email юр.лица"
+              label="Телефон юр.лица"
               required
-              hint="Введите email юр.лица"
+              hint="Введите телефон юр.лица"
             ></v-text-field>
-            <v-text-field
+            <v-textarea
               v-model="docData.metaInfo.taxi"
               class=""
               variant="underlined"
-              label="Email юр.лица"
+              label="Доп информация (Внизу документа)"
               required
-              hint="Введите email юр.лица"
-            ></v-text-field>
+              hint="Введите доп информацию"
+            ></v-textarea>
           </v-col>
         </v-row>
         <v-text-field
@@ -240,20 +232,20 @@
                       class="mr-5"
                       cols="4"
                       variant="underlined"
-                      label="Заголовок"
+                      label="Должность"
                       v-model="specialist.type"
                       required
                       clearable
-                      hint="Введите название этапа"
+                      hint="Введите должность"
                     ></v-text-field>
                     <v-text-field
                       cols="4"
                       variant="underlined"
-                      label="Заголовок"
+                      label="Ставка (час) "
                       v-model="specialist.cost"
                       required
                       clearable
-                      hint="Введите название этапа"
+                      hint="Введите ставку (час)"
                     ></v-text-field>
                   <v-icon @click="removeSpecialist(index, specialist.type)">mdi-delete</v-icon>
                 </v-row>

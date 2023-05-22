@@ -52,7 +52,7 @@ export default {
         path: '',
         filename: '',
         contactPerson: {
-          name: 'Евгений Смирнов',
+          name: 'Евгений Смирнов23',
           email: 'jenya@roky.rocks',
           phone: '+7 917 036 12 10'
         },

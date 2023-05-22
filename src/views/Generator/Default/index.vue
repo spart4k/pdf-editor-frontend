@@ -56,14 +56,7 @@
           ></v-text-field>
         </v-col>
         <v-col cols="6" md="2">
-          <v-text-field
-            v-model="docData.contactPerson.phone"
-            class=""
-            variant="underlined"
-            label="Телефон контактного лица"
-            required
-            hint="Введите телефон контактного лица"
-          ></v-text-field>
+          TEST
           <v-text-field
             v-model="docData.metaInfo.phone"
             class=""
@@ -86,9 +79,9 @@
             v-model="docData.metaInfo.taxi"
             class=""
             variant="underlined"
-            label="Email юр.лица"
+            label="Доп информация"
             required
-            hint="Введите email юр.лица"
+            hint="Введите доп.информацию"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -239,11 +232,11 @@
                     class="mr-5"
                     cols="4"
                     variant="underlined"
-                    label="Заголовок"
+                    label="Должность"
                     v-model="specialist.type"
                     required
                     clearable
-                    hint="Введите название этапа"
+                    hint="Ставка (час)"
                   ></v-text-field>
                   <v-text-field
                     cols="4"
